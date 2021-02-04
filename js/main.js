@@ -3,8 +3,11 @@
 // console.log(getRandomNumber);
 
 // includes all numbers
-const getRandomNumber = function(min, max) {
+const getRandomNumber = function(min , max) {
 // Comparison of numbers
+  if (!(typeof min === 'number') || !(typeof max === 'number')) {
+    return 'Введите число';
+  }
   if (min < 0 || max <= 0 || max < min) {
     return 'Неверный диапазон чисел'
   }
@@ -15,6 +18,9 @@ getRandomNumber(0, 100);
 
 // function with floating point
 const getFloatRandomNumber = function(min, max, point) {
+  if (!(typeof min === 'number') || !(typeof max === 'number') || !(typeof point === 'number')) {
+    return 'Введите число';
+  }
   if (min < 0 || max <= 0 || max < min) {
     return 'Неверный диапазон чисел'
   }
