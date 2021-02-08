@@ -33,10 +33,11 @@ const getFloatRandomNumber = function(min, max, point) {
 // console.log(getFloatRandomNumber(0, 100, 2));
 
 const All_OFFERS = 10;
+All_OFFERS;
 const author = {
   avatar: 'img/avatars/user0' + getRandomNumber(1, 8) + '.png',
 };
-// author;
+author;
 // console.log(author);
 const OFFER = {
   title: 'Проживание',
@@ -57,14 +58,15 @@ const OFFER = {
   photos: [
     'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
     'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
-    'http://o0.github.io/assets/images/tokyo/hotel3.jpg']
+    'http://o0.github.io/assets/images/tokyo/hotel3.jpg'],
 };
-
+OFFER;
 const locationOffer = function() {
   return {
     x: +getFloatRandomNumber(35.65, 35.7, 5),
     y: +getFloatRandomNumber(139.7, 139.8, 5),
   };
 };
+locationOffer();
 // console.log(locationOffer());
 
