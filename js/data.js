@@ -1,4 +1,4 @@
-import {getRandomNumber, getFloatRandomNumber} from './util.js'
+import {getRandomNumber, getFloatRandomNumber, getRandomArrayElement} from './util.js'
 
 const TITLE = [
   'Дома',
@@ -69,10 +69,6 @@ const PHOTOS =[
 
 const OFFERS_COUNT = 10;
 
-const getRandomArrayElement = (elements) => {
-  return elements[getRandomNumber(0, elements.length - 1)];
-};
-
 const getAnnouncement = () => {
   return {
     author: {
@@ -98,6 +94,8 @@ const getAnnouncement = () => {
   };
 };
 
-const similarAnnouncement = new Array(OFFERS_COUNT).fill(null).map(() => getAnnouncement());
-similarAnnouncement;
+const generateData = () => {
+  return new Array(OFFERS_COUNT).fill(null).map(() => getAnnouncement());
+}
 
+export{generateData};

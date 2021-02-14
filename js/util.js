@@ -18,4 +18,8 @@ const getFloatRandomNumber = (min, max, point) => {
   return +(Math.random() * (max - min) + min).toFixed(point);
 };
 
-export {getRandomNumber, getFloatRandomNumber};
+const getRandomArrayElement = (elements) => {
+  return elements[getRandomNumber(0, elements.length - 1)];
+};
+
+export {getRandomNumber, getFloatRandomNumber, getRandomArrayElement};
