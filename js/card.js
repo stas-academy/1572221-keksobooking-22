@@ -1,0 +1,22 @@
+import { generateData } from './data.js';
+const mapCanvas = document.querySelector('#map-canvas');
+const similarTemplate = document.querySelector('#card').content.querySelector('.popup');
+const similarAddsData = generateData();
+const similarListFragment = document.createDocumentFragment();
+
+similarAddsData.forEach(({offer,author}) => {
+  const addElement = similarTemplate.cloneNode(true);
+
+  addElement.querySelector('.popup__title').textContent = offer.title;
+  addElement.querySelector('.popup__text--address').textContent = offer.address + 'Проверка отображения';
+  addElement.querySelector('.popup__text--price').textContent = offer.price + ' р/ночь';
+  addElement.querySelector('.popup__type').textContent = offer.type;
+  addElement.querySelector('.popup__text--capacity').textContent = offer.rooms + '  комнаты для ' + offer.guests + '  гостей';
+  addElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + offer.check_in + ', выезд до ' + offer.check_out;
+  addElement.querySelector('.popup__features').textContent = offer.features;
+  addElement.querySelector('.popup__description').textContent = offer.description;
+  addElement.querySelector('.popup__photos').textContent = offer.photos;
+  addElement.querySelector('.popup__avatar').src = author.avatar;
+  similarListFragment.appendChild(addElement)
+});
+mapCanvas.appendChild(similarListFragment);

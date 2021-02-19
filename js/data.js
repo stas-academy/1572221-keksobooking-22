@@ -1,7 +1,7 @@
 import {getRandomNumber, getFloatRandomNumber, getRandomArrayElement} from './util.js'
 
 const TITLE = [
-  'Дома',
+  'Дом',
   'Апартаменты',
   'Отель',
 ];
@@ -98,4 +98,4 @@ const generateData = () => {
   return new Array(OFFERS_COUNT).fill(null).map(() => getAnnouncement());
 }
 
-export{generateData};
+export{ generateData };
