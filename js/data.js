@@ -1,12 +1,12 @@
 import {getRandomNumber, getFloatRandomNumber, getRandomArrayElement} from './util.js'
 
 const TITLE = [
-  'Дома',
+  'Дом',
   'Апартаменты',
   'Отель',
 ];
 
-const PRICE =[
+const PRICE = [
   4500,
   7800,
   9900,
@@ -46,7 +46,7 @@ const CHECK_OUT = [
   '14:00',
 ];
 
-const FEATURES =[
+const FEATURES = [
   'wifi',
   'dishwasher',
   'parking',
@@ -55,13 +55,13 @@ const FEATURES =[
   'conditioner',
 ];
 
-const DESCRIPTION =[
+const DESCRIPTION = [
   'Прекрасный вид на море',
   'Прекрасный вид на сад',
   'Прекрасный вид на горы',
 ];
 
-const PHOTOS =[
+const PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
@@ -98,4 +98,4 @@ const generateData = () => {
   return new Array(OFFERS_COUNT).fill(null).map(() => getAnnouncement());
 }
 
-export{generateData};
+export{ generateData };
