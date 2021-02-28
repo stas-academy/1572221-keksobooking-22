@@ -17,9 +17,9 @@ const showOffers = (data) => {
     addElement.querySelector('.popup__description').textContent = offer.description;
     addElement.querySelector('.popup__photos').textContent = offer.photos;
     addElement.querySelector('.popup__avatar').src = author.avatar;
-    similarListFragment.appendChild(addElement)
-    mapElement.appendChild(similarListFragment);
+    similarListFragment.appendChild(addElement);
   });
+  mapElement.appendChild(similarListFragment);
 }
 
 export {showOffers};
