@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Станислав Гайворонский](https://up.htmlacademy.ru/javascript/22/user/1572221).
-* Наставник: [Анастасия Шишова](https://htmlacademy.ru/profile/anashi).
+* Наставник: [Олег Зубов](https://htmlacademy.ru/profile/id42701).
 
 ---
 

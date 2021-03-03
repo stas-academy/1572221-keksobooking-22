@@ -9,4 +9,4 @@ import {processingForm, typeChange} from './form.js';
 processingForm();
 typeChange();
 
-
+import './map.js';

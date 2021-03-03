@@ -1,4 +1,4 @@
-const mapElement = document.querySelector('#map-canvas');
+// const mapElement = document.querySelector('#map-canvas');
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 const showOffers = (data) => {
@@ -18,8 +18,9 @@ const showOffers = (data) => {
     addElement.querySelector('.popup__photos').textContent = offer.photos;
     addElement.querySelector('.popup__avatar').src = author.avatar;
     similarListFragment.appendChild(addElement);
+
   });
-  mapElement.appendChild(similarListFragment);
+  // mapElement.appendChild(similarListFragment);
 }
 
 export {showOffers};
