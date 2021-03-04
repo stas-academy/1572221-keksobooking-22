@@ -1,13 +1,27 @@
 /*eslint-disable */
 
-// import { showOffers } from './card.js';
-// import './card.js';
+import { showOffers, createCard } from './card.js';
+import './card.js';
 import { generateData } from './data.js';
 
 const generateMap = generateData();
 
 const PRIMARY_LAT = 35.66650;
 const PRIMARY_LNG = 139.79650;
+
+const adForm = document.querySelector('.ad-form');
+const adFieldset = adForm.querySelectorAll('fieldset');
+const mapFilters = document.querySelector('.map__filters');
+const filterForm = mapFilters.childNodes;
+
+const disableForm = () => {
+  adForm.classList.add('ad-form--disabled');
+  adFieldset.forEach((fieldset) => fieldset.disabled = true);
+
+  mapFilters.classList.add('map__filters--disabled');
+  filterForm.forEach((fieldset) => fieldset.disabled = true);
+};
+disableForm();
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -16,7 +30,7 @@ const map = L.map('map-canvas')
   .setView({
     lat: PRIMARY_LAT,
     lng: PRIMARY_LNG,
-  }, 10);
+  }, 12);
 
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -66,65 +80,12 @@ generateMap.forEach((offersItem) => {
     },
   );
 
-  marker.addTo(map).bindPopup(offersItem), {
+  marker.addTo(map).bindPopup(createCard(offersItem), {
     keepInView: true,
-  };
-
-  // marker.addTo(map).bindPopup(showOffers(offersItem), {
-  //   keepInView: true,
-  // });
+  });
 });
 
 
 
 
-
-
-
-
-
-
-
-// const points = [
-//   {
-//     title: 'Футура',
-//     lat: 35.76925,
-//     lng: 139.71730,
-//   },
-//   {
-//     title: 'Шаверма',
-//     lat: 35.76783,
-//     lng: 139.61258,
-//   },
-//   {
-//     title: 'Франк',
-//     lat: 35.75958,
-//     lng: 139.80228,
-//   },
-//   {
-//     title: 'Ginza',
-//     lat: 35.77292,
-//     lng: 139.91982,
-//   },
-// ];
-// points.forEach(({lat, lng, title}) => {
-//   const icon = L.icon({
-//     iconUrl: 'img/pin.svg',
-//     iconSize: [40, 40],
-//     iconAnchor: [20, 40],
-//   });
-
-//   const marker = L.marker(
-//     {
-//       lat,
-//       lng,
-//     },
-//     {
-//       icon,
-//     },
-//   );
-
-//   marker.addTo(map).bindPopup(title);
-
-// });
 
