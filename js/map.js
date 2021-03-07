@@ -21,7 +21,18 @@ const disableForm = () => {
   mapFilters.classList.add('map__filters--disabled');
   filterForm.forEach((fieldset) => fieldset.disabled = true);
 };
+
 disableForm();
+
+const activateForm = () => {
+  adForm.classList.remove('ad-form--disabled');
+  adFieldset.forEach((fieldset) => fieldset.disabled = false);
+
+  mapFilters.classList.remove('map__filters--disabled');
+  filterForm.forEach((fieldset) => fieldset.disabled = false);
+};
+
+activateForm();
 
 const map = L.map('map-canvas')
   .on('load', () => {
