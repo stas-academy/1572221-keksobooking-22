@@ -1,3 +1,6 @@
+import { showMessageError } from './message.js'
+import { sendData } from './api.js'
+
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE = 1000000;
@@ -9,10 +12,10 @@ const typeOfHousing = adForm.querySelector('#type');
 const pricePlaceholder = adForm.querySelector('#price');
 const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');
-
 const titleForm = adForm.querySelector('#title');
 const numberOfRooms = adForm.querySelector('#room_number');
 const capacityRooms = adForm.querySelector('#capacity');
+const buttonReset = adForm.querySelector('.ad-form__reset');
 
 const priceOfHousing = {
   bungalow: 0,
@@ -88,4 +91,15 @@ const changeCapacity = () => {
 numberOfRooms.addEventListener('input', changeCapacity);
 capacityRooms.addEventListener('input', changeCapacity);
 
-export {processingForm, typeChange};
+const setUserFormSubmit = (onSuccess) => {
+  adForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    sendData(
+      () => onSuccess(),
+      () => showMessageError(),
+      new FormData(evt.target),
+    );
+  });
+};
+
+export {processingForm, typeChange, buttonReset, setUserFormSubmit, adForm};

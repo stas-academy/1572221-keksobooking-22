@@ -5,8 +5,25 @@ import {showOffers} from './card.js';
 const data = generateData();
 showOffers(data);
 import './form.js';
-import {processingForm, typeChange} from './form.js';
+import {processingForm, typeChange, buttonReset, setUserFormSubmit, adForm} from './form.js';
 processingForm();
 typeChange();
 
-import './map.js';
+import { showAlert, resetForm, ERROR_GETTING_DATA } from './util.js'
+import { showMessageSuccsess } from './message.js'
+import { getData } from './api.js'
+import { generateMap, resetMap} from './map.js'
+
+getData(
+  (data) => generateMap(data),
+  () => {
+    showAlert(ERROR_GETTING_DATA)
+  });
+
+const resetData = () => {
+  resetForm(adForm);
+  resetMap();
+}
+buttonReset.addEventListener('click', resetData);
+setUserFormSubmit(showMessageSuccsess);
+setUserFormSubmit(resetData);

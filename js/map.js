@@ -8,9 +8,11 @@ const generateMap = generateData();
 
 const PRIMARY_LAT = 35.66650;
 const PRIMARY_LNG = 139.79650;
+const LOCATION_FLOAT = 5;
 
 const adForm = document.querySelector('.ad-form');
 const adFieldset = adForm.querySelectorAll('fieldset');
+const address = document.querySelector('#address');
 const mapFilters = document.querySelector('.map__filters');
 const filterForm = mapFilters.childNodes;
 
@@ -33,6 +35,7 @@ const activateForm = () => {
 };
 
 activateForm();
+
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -67,7 +70,18 @@ const mainPinMarker = L.marker(
   },
 );
 
-mainPinMarker.addTo(map);
+const initMainMarker = () => {
+  mainPinMarker.addTo(map);
+
+  mainPinMarker.on('moveend', (evt) => {
+    const coordinates = evt.target.getLatLng();
+    const lat = coordinates.lat.toFixed(LOCATION_FLOAT);
+    const lng = coordinates.lng.toFixed(LOCATION_FLOAT);
+    address.value = lat + ' , ' + lng;
+  });
+};
+
+initMainMarker();
 
 // mainPinMarker.on('moveend', (evt) => {
 //   console.log(evt.target.getLatLng());
@@ -96,7 +110,18 @@ generateMap.forEach((offersItem) => {
   });
 });
 
+const resetMap = () => {
+  map.setView({
+    lat: PRIMARY_LAT,
+    lng: PRIMARY_LNG,
+  }, 12);
+  mainPinMarker.setLatLng({
+    lat: PRIMARY_LAT,
+    lng: PRIMARY_LNG,
+  });
+}
 
+export { generateMap, resetMap};
 
 
 
