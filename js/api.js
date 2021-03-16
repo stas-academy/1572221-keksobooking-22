@@ -1,16 +1,18 @@
-const getData = (onSuccess, onError) => {
+import {showAlert} from './util.js';
+
+const getData = (onSuccess) => {
   fetch('https://22.javascript.pages.academy/keksobooking/data')
     .then((response) => {
       if (response.ok) {
         return response.json();
       }
-      throw new Error('Не удалось получить данные с сервера');
+      throw new Error();
     })
     .then((data) => {
       onSuccess(data);
     })
-    .catch((err) => {
-      onError(err);
+    .catch(() => {
+      showAlert('Не удалось получить данные с сервера');
     });
 };
 

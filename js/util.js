@@ -1,3 +1,5 @@
+const ALERT_SHOW_TIME = 5000;
+
 const getRandomNumber = (min , max) => {
   if (!(typeof min === 'number') || !(typeof max === 'number')) {
     return 'Введите число';
@@ -21,11 +23,6 @@ const getFloatRandomNumber = (min, max, point) => {
 const getRandomArrayElement = (elements) => {
   return elements[getRandomNumber(0, elements.length - 1)];
 };
-
-export {getRandomNumber, getFloatRandomNumber, getRandomArrayElement};
-
-const ERROR_GETTING_DATA = 'Не удалось получить данные с сервера. Попробуйте позже';
-const ALERT_SHOW_TIME = 5000;
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -52,11 +49,11 @@ const isEscEvent = (evt) => {
   return evt.key === ('Escape' || 'Esc');
 };
 
-const resetForm = (form) => {
-  form.reset()
-}
+const isClickEvent = (evt) => {
+  return evt.type === 'click';
+};
 
-export { showAlert, isEscEvent, resetForm, ERROR_GETTING_DATA };
+export { showAlert, isEscEvent, isClickEvent, getRandomNumber, getFloatRandomNumber, getRandomArrayElement };
 
 
 

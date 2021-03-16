@@ -1,29 +1,13 @@
-import './data.js';
-import { generateData } from './data.js';
-import './card.js';
-import {showOffers} from './card.js';
-const data = generateData();
-showOffers(data);
-import './form.js';
-import {processingForm, typeChange, buttonReset, setUserFormSubmit, adForm} from './form.js';
+import './form.js'
+import {setUserFormSubmit, processingForm, typeChange} from './form.js';
+import './map.js'
+import {createMarkers} from './map.js';
+import {getData} from './api.js';
+
 processingForm();
 typeChange();
+setUserFormSubmit();
 
-import { showAlert, resetForm, ERROR_GETTING_DATA } from './util.js'
-import { showMessageSuccsess } from './message.js'
-import { getData } from './api.js'
-import { generateMap, resetMap} from './map.js'
-
-getData(
-  (data) => generateMap(data),
-  () => {
-    showAlert(ERROR_GETTING_DATA)
-  });
-
-const resetData = () => {
-  resetForm(adForm);
-  resetMap();
-}
-buttonReset.addEventListener('click', resetData);
-setUserFormSubmit(showMessageSuccsess);
-setUserFormSubmit(resetData);
+getData((data) => {
+  createMarkers(data);
+});

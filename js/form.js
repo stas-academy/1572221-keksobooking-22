@@ -1,5 +1,6 @@
-import { showMessageError } from './message.js'
 import { sendData } from './api.js'
+import {isEscEvent, isClickEvent} from './util.js';
+import {mainMarker, PRIMARY_LAT, PRIMARY_LNG} from './map.js';
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
@@ -16,6 +17,12 @@ const titleForm = adForm.querySelector('#title');
 const numberOfRooms = adForm.querySelector('#room_number');
 const capacityRooms = adForm.querySelector('#capacity');
 const buttonReset = adForm.querySelector('.ad-form__reset');
+const main = document.querySelector('main');
+const successMessage = document.querySelector('#success').content.querySelector('.success');
+const errorMessage = document.querySelector('#error').content.querySelector('.error');
+const mapFilters = document.querySelector('.map__filters');
+const formAd = document.querySelector('.ad-form');
+const addressForm = formAd.querySelector('#address');
 
 const priceOfHousing = {
   bungalow: 0,
@@ -91,15 +98,49 @@ const changeCapacity = () => {
 numberOfRooms.addEventListener('input', changeCapacity);
 capacityRooms.addEventListener('input', changeCapacity);
 
-const setUserFormSubmit = (onSuccess) => {
+const resetFormAd = () => {
+  formAd.reset();
+  mapFilters.reset();
+  mainMarker.setLatLng({lat: PRIMARY_LAT, lng: PRIMARY_LNG});
+  addressForm.value = PRIMARY_LAT + ' , ' + PRIMARY_LNG;
+};
+
+buttonReset.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  resetFormAd();
+});
+
+const closeMessage = (evt) => {
+  if (isEscEvent(evt) || isClickEvent(evt)) {
+    successMessage.remove();
+    errorMessage.remove();
+    document.removeEventListener('keydown', closeMessage);
+    document.removeEventListener('mousedown', closeMessage);
+  }
+};
+
+const showSuccessMessage = () => {
+  main.append(successMessage);
+  resetFormAd();
+  document.addEventListener('keydown', closeMessage);
+  document.addEventListener('click', closeMessage);
+};
+
+const showErrorMessage = () => {
+  main.append(errorMessage);
+  document.addEventListener('keydown', closeMessage);
+  document.addEventListener('click', closeMessage);
+}
+
+const setUserFormSubmit = () => {
   adForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     sendData(
-      () => onSuccess(),
-      () => showMessageError(),
+      () => showSuccessMessage(),
+      () => showErrorMessage(),
       new FormData(evt.target),
     );
   });
 };
 
-export {processingForm, typeChange, buttonReset, setUserFormSubmit, adForm};
+export {processingForm, typeChange, setUserFormSubmit};
