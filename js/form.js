@@ -75,15 +75,15 @@ pricePlaceholder.addEventListener('input', () => {
 });
 
 const changeCapacity = () => {
-  if (numberOfRooms.value < capacityRooms.value && numberOfRooms.value != MAX_ROOMS && capacityRooms.value != MIN_GUESTS) {
+  if (numberOfRooms.value < capacityRooms.value && numberOfRooms.value !== MAX_ROOMS && capacityRooms.value !== MIN_GUESTS) {
     numberOfRooms.setCustomValidity('');
     capacityRooms.setCustomValidity('Не может быть гостей больше чем комнат');
   }
-  else if (numberOfRooms.value == MAX_ROOMS && capacityRooms.value != MIN_GUESTS) {
+  else if (numberOfRooms.value === MAX_ROOMS && capacityRooms.value !== MIN_GUESTS) {
     numberOfRooms.setCustomValidity('');
     capacityRooms.setCustomValidity('Не для гостей');
   }
-  else if (capacityRooms.value == MIN_GUESTS && numberOfRooms.value != MAX_ROOMS) {
+  else if (capacityRooms.value === MIN_GUESTS && numberOfRooms.value !== MAX_ROOMS) {
     numberOfRooms.setCustomValidity('Только для 100 комнат');
     capacityRooms.setCustomValidity('');
   }

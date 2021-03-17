@@ -53,7 +53,22 @@ const isClickEvent = (evt) => {
   return evt.type === 'click';
 };
 
-export { showAlert, isEscEvent, isClickEvent, getRandomNumber, getFloatRandomNumber, getRandomArrayElement };
+const debounce = (callback, timeout) => {
+  let timeWait;
+  return () => {
+    const context = this;
+    const through = function () {
+      timeWait = null;
+      callback.apply(context)
+    }
+
+    clearTimeout(timeWait);
+
+    timeWait = setTimeout(through, timeout);
+  };
+};
+
+export { showAlert, isEscEvent, isClickEvent, getRandomNumber, getFloatRandomNumber, getRandomArrayElement, debounce };
 
 
 
