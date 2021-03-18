@@ -1,12 +1,13 @@
 /*eslint-disable */
 
 import { createCard } from './card.js';
+import {getFilter} from './filter.js';
 
 const PRIMARY_LAT = 35.66650;
 const PRIMARY_LNG = 139.79650;
 const LOCATION_FLOAT = 5;
 const ZOOM = 12;
-
+const NUMBER_OF_CARDS = 10;
 const adForm = document.querySelector('.ad-form');
 const fieldsetsFormAd = adForm.querySelectorAll('fieldset');
 const addressForm = document.querySelector('#address');
@@ -102,7 +103,8 @@ const markersLayer = new L.LayerGroup();
 const createMarkers = (data) => {
   markersLayer.clearLayers();
   data
-    .slice()
+    .filter(getFilter)
+    .slice(0, NUMBER_OF_CARDS)
     .forEach((element) => {
       const marker = L.marker(
         {

@@ -16,9 +16,7 @@ const createCard = (cardAds) => {
   addElement.querySelector('.popup__type').textContent = TYPES[cardAds.offer.type];
   addElement.querySelector('.popup__text--capacity').textContent = cardAds.offer.rooms + '  комнаты для ' + cardAds.offer.guests + '  гостей';
   addElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + cardAds.offer.check_in + ', выезд до ' + cardAds.offer.check_out;
-  // addElement.querySelector('.popup__features').textContent = offer.features;
   addElement.querySelector('.popup__description').textContent = cardAds.offer.description;
-  // addElement.querySelector('.popup__photos').textContent = offer.photos;
   addElement.querySelector('.popup__avatar').src = cardAds.author.avatar;
 
   return addElement;
