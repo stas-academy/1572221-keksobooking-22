@@ -1,4 +1,4 @@
-import { sendData } from './api.js'
+import {sendData} from './api.js'
 import {isEscEvent, isClickEvent} from './util.js';
 import {mainMarker, PRIMARY_LAT, PRIMARY_LNG} from './map.js';
 
@@ -24,7 +24,7 @@ const mapFilters = document.querySelector('.map__filters');
 const formAd = document.querySelector('.ad-form');
 const addressForm = formAd.querySelector('#address');
 
-const priceOfHousing = {
+const PriceOfHousing = {
   bungalow: 0,
   flat: 1000,
   house: 5000,
@@ -37,8 +37,8 @@ const checkChange = (evt) => {
 }
 
 const typeChange = () => {
-  pricePlaceholder.min = priceOfHousing[typeOfHousing.value];
-  pricePlaceholder.placeholder = priceOfHousing[typeOfHousing.value];
+  pricePlaceholder.min = PriceOfHousing[typeOfHousing.value];
+  pricePlaceholder.placeholder = PriceOfHousing[typeOfHousing.value];
 }
 
 const processingForm = () => {

@@ -68,7 +68,7 @@ const debounce = (callback, timeout) => {
   };
 };
 
-export { showAlert, isEscEvent, isClickEvent, getRandomNumber, getFloatRandomNumber, getRandomArrayElement, debounce };
+export {showAlert, isEscEvent, isClickEvent, getRandomNumber, getFloatRandomNumber, getRandomArrayElement, debounce};
 
 
 

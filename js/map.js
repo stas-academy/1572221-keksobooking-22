@@ -1,6 +1,6 @@
 /*eslint-disable */
 
-import { createCard } from './card.js';
+import {createCard} from './card.js';
 import {getFilter} from './filter.js';
 
 const PRIMARY_LAT = 35.66650;
