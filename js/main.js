@@ -1,5 +1,5 @@
 import './form.js'
-import {setUserFormSubmit, processingForm, typeChange} from './form.js';
+import {setUserFormSubmit, getProcessingForm, typeChange} from './form.js';
 import './map.js'
 import {createMarkers} from './map.js';
 import {getData} from './api.js';
@@ -8,7 +8,7 @@ import {debounce} from './util.js';
 
 const DEBOUNSE_DELAY  = 500;
 
-processingForm();
+getProcessingForm();
 typeChange();
 setUserFormSubmit();
 

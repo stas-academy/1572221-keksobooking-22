@@ -12,7 +12,7 @@ const createCard = (cardAds) => {
   const cardPhotos = addElement.querySelector('.popup__photos');
   const photo = addElement.querySelector('.popup__photo');
 
-  const basicPhotos = () => {
+  const getBasicPhotos = () => {
     cardPhotos.innerHTML = '';
     cardAds.offer.photos.forEach((item, i) => {
       photo.src = cardAds.offer.photos[i];
@@ -29,7 +29,7 @@ const createCard = (cardAds) => {
   addElement.querySelector('.popup__description').textContent = cardAds.offer.description;
   addElement.querySelector('.popup__avatar').src = cardAds.author.avatar;
 
-  basicPhotos();
+  getBasicPhotos();
 
   return addElement;
 };

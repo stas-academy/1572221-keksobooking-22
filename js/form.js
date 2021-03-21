@@ -41,7 +41,7 @@ const typeChange = () => {
   pricePlaceholder.placeholder = PriceOfHousing[typeOfHousing.value];
 }
 
-const processingForm = () => {
+const getProcessingForm = () => {
   typeOfHousing.addEventListener('input', typeChange);
   timeIn.addEventListener('input', checkChange);
   timeOut.addEventListener('input', checkChange);
@@ -137,4 +137,4 @@ const setUserFormSubmit = () => {
   });
 };
 
-export {processingForm, typeChange, setUserFormSubmit};
+export {getProcessingForm, typeChange, setUserFormSubmit};
